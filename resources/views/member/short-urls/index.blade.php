@@ -13,11 +13,11 @@
     </div>
 @endif
 
-<table class="table table-bordered">
+<table class="table table-bordered align-middle">
     <thead>
         <tr>
             <th>#</th>
-            <th>Short Code</th>
+            <th>Short URL</th>
             <th>Original URL</th>
         </tr>
     </thead>
@@ -25,8 +25,14 @@
         @foreach($shortUrls as $url)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $url->code }}</td>
-                <td>{{ $url->original_url }}</td>
+                <td>
+                    <a href="{{ url($url->code) }}" target="_blank">
+                        {{ url($url->code) }}
+                    </a>
+                </td>
+                <td class="text-break">
+                    {{ $url->original_url }}
+                </td>
             </tr>
         @endforeach
     </tbody>
